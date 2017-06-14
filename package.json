@@ -67,7 +67,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
+    "@types/slick-carousel": "^1.6.31",
     "slick-carousel": "^1.6.0"
   }
 }

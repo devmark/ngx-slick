@@ -4,8 +4,7 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
-declare var $:any;
-import {JQuerySlickOptions} from 'slick';
+declare var $: any;
 
 /**
  * Slick component
@@ -24,7 +23,7 @@ import {JQuerySlickOptions} from 'slick';
 })
 export class SlickComponent implements AfterViewInit, OnDestroy {
 
-    @Input() config: JQuerySlickOptions;
+    @Input() config: any;
     @Output() afterChange: EventEmitter<any> = new EventEmitter();
     @Output() beforeChange: EventEmitter<any> = new EventEmitter();
     @Output() breakpoint: EventEmitter<any> = new EventEmitter();
