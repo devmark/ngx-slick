@@ -20,7 +20,12 @@
   "typings": "ngx-slick.d.ts",
   "peerDependencies": {
     "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "slick-carousel": "^1.6.0"
   }
 }

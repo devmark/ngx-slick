@@ -9,6 +9,8 @@
       "dom"
     ],
     "skipLibCheck": true,
-    "types": []
+    "types": [
+      "./src/slick.d.ts"
+    ]
   }
 }
