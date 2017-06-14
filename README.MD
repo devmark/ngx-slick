@@ -25,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { SampleModule } from 'ngx-slick';
+import { SlickModule } from 'ngx-slick';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { SampleModule } from 'ngx-slick';
     BrowserModule,
 
     // Specify your library as an import
-    LibraryModule
+    SlickModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -43,15 +43,51 @@ import { SampleModule } from 'ngx-slick';
 export class AppModule { }
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
-
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
+- Include jquery and slick css/js in your application :
 ```
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+<script src="https://unpkg.com/slick-carousel@1.6.0/slick/slick.js"></script>
+```
+
+Once your library is imported, you can use its components, directives and pipes in your Angular application:
+```html
+  <!-- You can now use your library component in app.component.html -->
+    <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+              <img src="{{ slide.img }}" alt="" width="100%">
+        </div>
+    </ngx-slick>
+    
+    <button (click)="addSlide()">Add</button>
+    <button (click)="removeSlide()">Remove</button>
+    <button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+    <button (click)="slickModal.unslick()">unslick</button>
+```
+
+```javascript
+  slides = [
+    {img: "http://placehold.it/350x150/000000"},
+    {img: "http://placehold.it/350x150/111111"},
+    {img: "http://placehold.it/350x150/333333"},
+    {img: "http://placehold.it/350x150/666666"}
+  ];
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+
+  addSlide() {
+    this.slides.push({img: "http://placehold.it/350x150/777777"})
+  }
+
+  removeSlide() {
+    this.slides.length = this.slides.length - 1;
+  }
+
+  afterChange(e) {
+    console.log('afterChange');
+  }
+```
+
 
 ## Development
 

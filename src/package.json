@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/username/repo"
+    "url": "https://github.com/devmark/ngx-slick"
   },
   "author": {
     "name": "Mark",
@@ -14,7 +14,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/username/repo/issues"
+    "url": "https://github.com/devmark/ngx-slick/issues"
   },
   "module": "ngx-slick.js",
   "typings": "ngx-slick.d.ts",

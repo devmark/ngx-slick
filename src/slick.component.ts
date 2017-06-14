@@ -4,13 +4,11 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
+declare var $:any;
 import {JQuerySlickOptions} from 'slick';
-declare var $: any;
 
 /**
  * Slick component
- * Usage :
- *  <json-editor [(ngModel)]="data" [config]="{...}"></json-editor>
  */
 @Component({
     selector: 'ngx-slick',
