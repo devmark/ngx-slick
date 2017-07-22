@@ -99,7 +99,6 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
     }
 
     removeSlide(slickItem: SlickItemDirective) {
-        console.log(`removeSlide`, slickItem);
         const idx = this.slides.indexOf(slickItem);
         this.$instance.slick('slickRemove', idx);
         this.slides = this.slides.filter(s => s !== slickItem);
