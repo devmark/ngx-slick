@@ -28,6 +28,7 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
     @Output() beforeChange: EventEmitter<any> = new EventEmitter();
     @Output() breakpoint: EventEmitter<any> = new EventEmitter();
     @Output() destroy: EventEmitter<any> = new EventEmitter();
+    @Output() init: EventEmitter<any> = new EventEmitter();
 
     public slides: any = [];
     public $instance: any;
@@ -60,7 +61,17 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
         const self = this;
 
         this.zone.runOutsideAngular(() => {
-            this.$instance = $(this.el.nativeElement).slick(this.config);
+
+            this.$instance = $(this.el.nativeElement);
+
+            this.$instance.on('init', (event, slick) => {
+                self.zone.run(() => {
+                    self.init.emit({event, slick});
+                });
+            });
+            
+            this.$instance.slick(this.config);
+
             this.initialized = true;
 
             this.$instance.on('afterChange', (event, slick, currentSlide) => {
@@ -107,6 +118,7 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
     /**
      * Slick Method
      */
+
     public slickGoTo(index: number) {
         this.zone.run(() => {
             this.$instance.slick('slickGoTo', index);
