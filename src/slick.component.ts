@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
-declare var $: any;
+declare var jQuery: any;
 
 /**
  * Slick component
@@ -60,7 +60,7 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
         const self = this;
 
         this.zone.runOutsideAngular(() => {
-            this.$instance = $(this.el.nativeElement).slick(this.config);
+            this.$instance = jQuery(this.el.nativeElement).slick(this.config);
             this.initialized = true;
 
             this.$instance.on('afterChange', (event, slick, currentSlide) => {
