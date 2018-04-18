@@ -60,6 +60,7 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
         const self = this;
 
         this.zone.runOutsideAngular(() => {
+            $(_this.el.nativeElement)[0].innerHTML = "";
             this.$instance = $(this.el.nativeElement).slick(this.config);
             this.initialized = true;
 
