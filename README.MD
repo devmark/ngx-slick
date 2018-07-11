@@ -1,6 +1,6 @@
 # ngx-slick
 
-Support angular 6+
+Support angular 6+, Slick 1.8.1
 
 [Example](https://embed.plnkr.co/fblxzfPneL66950A4VDM/)
 
@@ -49,10 +49,11 @@ export class AppModule { }
 
 - Include jquery and slick css/js in your application :
 ```
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
-<script src="https://unpkg.com/slick-carousel@1.6.0/slick/slick.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//unpkg.com/slick-carousel@1.8.1/slick/slick.js"></script>
 ```
 
 Once your library is imported, you can use its components, directives and pipes in your Angular application:
