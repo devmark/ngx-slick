@@ -1,6 +1,6 @@
 {
   "name": "ngx-slick",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/devmark/ngx-slick"
@@ -16,12 +16,15 @@
   "bugs": {
     "url": "https://github.com/devmark/ngx-slick/issues"
   },
+  "main": "ngx-slick.umd.js",
   "module": "ngx-slick.js",
+  "jsnext:main": "ngx-slick.js",
   "typings": "ngx-slick.d.ts",
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
-    "@angular/forms": "^4.0.0",
-    "rxjs": "^5.1.0",
+    "@angular/core": "^6.0.0",
+    "@angular/common": "^6.0.0",
+    "@angular/forms": "^6.0.0",
+    "rxjs": "^6.0.0",
     "zone.js": "^0.8.4"
   }
 }

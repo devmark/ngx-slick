@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
-declare var $: any;
+declare const jQuery: any;
 
 /**
  * Slick component
@@ -28,7 +28,7 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
     @Output() beforeChange: EventEmitter<any> = new EventEmitter();
     @Output() breakpoint: EventEmitter<any> = new EventEmitter();
     @Output() destroy: EventEmitter<any> = new EventEmitter();
-
+    @Output() init: EventEmitter<any> = new EventEmitter();
     public slides: any = [];
     public $instance: any;
     private initialized: Boolean = false;
@@ -60,7 +60,15 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
         const self = this;
 
         this.zone.runOutsideAngular(() => {
-            this.$instance = $(this.el.nativeElement).slick(this.config);
+            jQuery(this.el.nativeElement)[0].innerHTML = '';
+            this.$instance = jQuery(this.el.nativeElement);
+            this.$instance.on('init', (event, slick) => {
+                this.zone.run(() => {
+                    this.init.emit({event, slick});
+                });
+            });
+
+            this.$instance.slick(this.config);
             this.initialized = true;
 
             this.$instance.on('afterChange', (event, slick, currentSlide) => {
@@ -93,14 +101,20 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
         if (!this.initialized) {
             this.initSlick();
         }
-
         this.slides.push(slickItem);
-        this.$instance.slick('slickAdd', slickItem.el.nativeElement);
+
+        this.zone.run(() => {
+            this.$instance.slick('slickAdd', slickItem.el.nativeElement);
+        });
     }
 
     removeSlide(slickItem: SlickItemDirective) {
         const idx = this.slides.indexOf(slickItem);
-        this.$instance.slick('slickRemove', idx);
+
+        this.zone.run(() => {
+            this.$instance.slick('slickRemove', idx);
+        });
+
         this.slides = this.slides.filter(s => s !== slickItem);
     }
 

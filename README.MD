@@ -1,5 +1,9 @@
 # ngx-slick
 
+Support angular 6+
+
+[Example](https://embed.plnkr.co/fblxzfPneL66950A4VDM/)
+
 ## Installation
 
 To install this library, run:
@@ -59,7 +63,7 @@ Once your library is imported, you can use its components, directives and pipes 
               <img src="{{ slide.img }}" alt="" width="100%">
         </div>
     </ngx-slick>
-    
+
     <button (click)="addSlide()">Add</button>
     <button (click)="removeSlide()">Remove</button>
     <button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
