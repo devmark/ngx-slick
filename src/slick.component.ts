@@ -153,9 +153,12 @@ export class SlickComponent implements AfterViewInit, OnDestroy {
     }
 
     public unslick() {
-        this.zone.run(() => {
-            this.$instance.slick('unslick');
-        });
+        if (this.$instance) {
+            this.zone.run(() => {
+                this.$instance.slick('unslick');
+            });
+        }
+        this.initialized = false;
     }
 
 }
